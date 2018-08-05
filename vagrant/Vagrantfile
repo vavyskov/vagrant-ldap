@@ -1,0 +1,42 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  
+  ## Box
+  config.vm.box = "debian/contrib-stretch64"
+  
+  ## Sources (not requred for vagrantup.com)
+  #config.vm.box_url = "http://files.vagrantup.com/customBox.box"
+  #config.vm.box_url = "file:///C:/path/to/vagrant/customBox.box"
+  #config.vm.box_url = "file:///opt/vagrant/boxes/customBox.box"
+
+  ## Hostname
+  config.vm.hostname = "ldap.example.com"
+
+  ## Network
+  config.vm.network "forwarded_port", guest: 8080, host: 8080, host_ip: "127.0.0.1"
+  config.vm.network :private_network, ip: "192.168.33.20"
+  
+  ## Run shell script
+  config.vm.provision :shell, path: "config/ldap.sh"
+  
+  ## Share an additional folder to the guest VM
+  #config.vm.synced_folder "../workspace/", "/home/vagrant/workspace"
+  
+  ## VirtualBox
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "ldap"
+    vb.cpus = 1
+    vb.memory = 256
+    ## HDD cache off !!!
+    vb.customize [
+      "storagectl", :id, 
+      "--name", "SATA Controller", 
+      "--hostiocache", "off"
+    ]
+    ## Fix slow DNS lookups
+    vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+  end
+
+end

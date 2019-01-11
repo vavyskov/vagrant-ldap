@@ -30,7 +30,7 @@ Debian OpenLDAP and LDAP Account Manager stack
     - macOX: `/private/etc/hosts`
     - Windows: `C:\Windows\System32\drivers\etc\hosts`
 
-## The OpenLDAP comes with pre-configured the following entries:
+## The OpenLDAP comes with pre-configured the following entries
 
     uid=user1,ou=people,dc=example,dc=com
     uid=user2,ou=people,dc=example,dc=com

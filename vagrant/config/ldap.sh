@@ -68,9 +68,9 @@ sed -i 's/ou=People/ou=people/' /var/lib/ldap-account-manager/config/lam.conf
 sed -i 's/dc=my-domain,dc=com/dc=example,dc=com/g' /var/lib/ldap-account-manager/config/lam.conf
 #sed -i 's/defaultLanguage: en_GB.utf8:UTF-8:English (Great Britain)/defaultLanguage: cs_CZ.utf8:UTF-8:Čeština (Česko)/' /var/lib/ldap-account-manager/config/lam.conf
 
-## Change default port from 80 to 8080
-sed -i 's/Listen 80/Listen 8080/' /etc/apache2/ports.conf
-sed -i 's/:80/:8080/' /etc/apache2/sites-available/000-default.conf
+## Change default port from 80 to 8020
+sed -i 's/Listen 80/Listen 8020/' /etc/apache2/ports.conf
+sed -i 's/:80/:8020/' /etc/apache2/sites-available/000-default.conf
 #sed -ie "s/\(Listen 80\)/\180/g" /etc/apache2/ports.conf
 #sed -ie "s/\(\*:80\)/\180/g" /etc/apache2/sites-available/000-default.conf
 
